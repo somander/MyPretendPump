@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <EditTextPreference
+        android:defaultValue="120"
+        android:inputType="number"
+        android:selectAllOnFocus="true"
+        android:singleLine="true"
+        android:title="Blood Glucose Target (mg/dL)"
+        android:key="bg_preference" />
+
+    <EditTextPreference
+        android:defaultValue="20"
+        android:inputType="number"
+        android:selectAllOnFocus="true"
+        android:singleLine="true"
+        android:title="Carbohydrate Ratio (g/U)"
+        android:key="ratio_preference" />
+
+    <EditTextPreference
+        android:defaultValue="80"
+        android:inputType="number"
+        android:selectAllOnFocus="true"
+        android:singleLine="true"
+        android:title="Insulin Sensitivity (mg/dL per U)"
+        android:key="sensitivity_preference" />
+</PreferenceScreen>
