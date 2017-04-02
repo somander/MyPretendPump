@@ -63,7 +63,8 @@
         android:layout_height="wrap_content"
         android:id="@+id/eTUnitsInsulin"
         android:textAppearance="@android:style/TextAppearance.Material.Large"
-        android:layout_alignBottom="@+id/tVunitsText" />
+        android:layout_alignBottom="@+id/tVunitsText"
+        android:background="@android:color/holo_green_light" />
 
     <TextView
         android:text="units for BG correction"

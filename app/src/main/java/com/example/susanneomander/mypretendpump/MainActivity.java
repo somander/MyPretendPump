@@ -83,12 +83,12 @@ public class MainActivity extends AppCompatActivity {
         //toast.show();
 
         float bgcorrection = (bloodglucose-mTarget)/mSensitivity;
-        tVBGUnits.setText(String.format("%.01f", bgcorrection));
+        tVBGUnits.setText(String.format("   %.01f", bgcorrection));
         float carbcorrection = carbohydrates / mRatio;
-        tVCarbUnits.setText(String.format("%.01f", carbcorrection));
+        tVCarbUnits.setText(String.format("   %.01f", carbcorrection));
 
         units = bgcorrection + carbcorrection;
-        eTUnits.setText(String.format("%.01f", units));
+        eTUnits.setText(String.format("  %.01f", units));
 
         try {
             InputMethodManager imm = (InputMethodManager)getSystemService(INPUT_METHOD_SERVICE);
@@ -108,13 +108,13 @@ public class MainActivity extends AppCompatActivity {
         long timeSinceDose = System.currentTimeMillis() - doseTime;
         long fullDay = 24 * 60 * 60 * 1000;
         if (timeSinceDose > fullDay) {
-            tVLog.setText("Last bolus was more than 24 hours ago");
+            tVLog.setText("  Last bolus was more than 24 hours ago");
         }
         if (timeSinceDose < fullDay) {
-            tVLog.setText(String.format("Last bolus was %.01f units at %s", dose, DateUtils.getRelativeTimeSpanString(doseTime)));
+            tVLog.setText(String.format("  Last bolus was %.01f units %s", dose, DateUtils.getRelativeTimeSpanString(doseTime)));
         }
         if (doseTime == 0) {
-            tVLog.setText("No bolus log recorded");
+            tVLog.setText("  No bolus log recorded");
         }
     }
 
