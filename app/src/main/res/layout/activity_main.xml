@@ -13,20 +13,11 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/tVBGUnits"
-        android:textAppearance="@android:style/TextAppearance.Material.Medium"
-        android:layout_below="@+id/button"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
-
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
         android:id="@+id/tVCarbUnits"
         android:textAppearance="@android:style/TextAppearance.Material.Medium"
         android:layout_below="@+id/tVBGUnits"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
+        android:layout_alignLeft="@+id/tVBGUnits"
+        android:layout_alignStart="@+id/tVBGUnits" />
 
     <EditText
         android:layout_width="wrap_content"
@@ -75,27 +66,7 @@
         android:layout_alignBottom="@+id/tVunitsText" />
 
     <TextView
-        android:text="  units of insulin"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/tVunitsText"
-        android:textAppearance="@android:style/TextAppearance.Material.Large"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="34dp" />
-
-    <TextView
-        android:text="units for Carb correction"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/tVCarbUnitsText"
-        android:textAppearance="@android:style/TextAppearance.Material.Medium"
-        android:layout_alignBottom="@+id/tVCarbUnits"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true" />
-
-    <TextView
-        android:text="  units for BG correction"
+        android:text="units for BG correction"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/tVBGUnitsText"
@@ -103,7 +74,9 @@
         android:layout_alignBaseline="@+id/tVBGUnits"
         android:layout_alignBottom="@+id/tVBGUnits"
         android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true" />
+        android:layout_alignParentEnd="true"
+        android:layout_alignLeft="@+id/tVCarbUnitsText"
+        android:layout_alignStart="@+id/tVCarbUnitsText" />
 
     <Button
         android:text="Calculate"
@@ -114,5 +87,35 @@
         android:layout_below="@+id/eTCarbs"
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true" />
+
+    <TextView
+        android:text="  units of insulin"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/tVunitsText"
+        android:textAppearance="@android:style/TextAppearance.Material.Large"
+        android:layout_below="@+id/tVCarbUnits"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="89dp" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/tVBGUnits"
+        android:textAppearance="@android:style/TextAppearance.Material.Medium"
+        android:layout_below="@+id/button"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <TextView
+        android:text="units for Carb correction"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/tVCarbUnitsText"
+        android:textAppearance="@android:style/TextAppearance.Material.Medium"
+        android:layout_alignBaseline="@+id/tVCarbUnits"
+        android:layout_alignBottom="@+id/tVCarbUnits"
+        android:layout_alignLeft="@+id/tVunitsText"
+        android:layout_alignStart="@+id/tVunitsText" />
 
 </RelativeLayout>
