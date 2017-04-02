@@ -1,5 +1,6 @@
 package com.example.susanneomander.mypretendpump;
 
+import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.preference.PreferenceManager;
@@ -18,11 +19,13 @@ import android.widget.Toast;
 import java.util.prefs.Preferences;
 
 public class MainActivity extends AppCompatActivity {
+    float units;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        displayLog();
     }
 
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -40,7 +43,6 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void calculateInsulin(View view) {
-        float units;
 
         EditText eTBG = (EditText) findViewById(R.id.eTBG);
         EditText eTCarbs = (EditText) findViewById(R.id.eTCarbs);
@@ -95,6 +97,22 @@ public class MainActivity extends AppCompatActivity {
         }
 
 
+    }
+
+    public void displayLog() {
+        TextView tVLog = (TextView) findViewById(R.id.tVLog);
+        SharedPreferences sharedPref = getPreferences(Context.MODE_PRIVATE);
+        float dose = sharedPref.getFloat("dose", 0);
+        tVLog.setText(String.format("%.01f", dose));
+    }
+
+    public void logDose(View view) {
+
+        SharedPreferences sharedPref = getPreferences(Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPref.edit();
+        editor.putFloat("dose", units);
+        editor.commit();
+        displayLog();
     }
 
 }

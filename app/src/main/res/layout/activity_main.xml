@@ -82,7 +82,7 @@
         android:text="Calculate"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/button"
+        android:id="@+id/btnCalculate"
         android:onClick="calculateInsulin"
         android:layout_below="@+id/eTCarbs"
         android:layout_alignParentRight="true"
@@ -103,7 +103,7 @@
         android:layout_height="wrap_content"
         android:id="@+id/tVBGUnits"
         android:textAppearance="@android:style/TextAppearance.Material.Medium"
-        android:layout_below="@+id/button"
+        android:layout_below="@+id/btnCalculate"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true" />
 
@@ -117,5 +117,24 @@
         android:layout_alignBottom="@+id/tVCarbUnits"
         android:layout_alignLeft="@+id/tVunitsText"
         android:layout_alignStart="@+id/tVunitsText" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:id="@+id/tVLog"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:background="?android:attr/colorControlHighlight" />
+
+    <Button
+        android:text="Log this"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/eTUnitsInsulin"
+        android:layout_toRightOf="@+id/tVunitsText"
+        android:layout_toEndOf="@+id/tVunitsText"
+        android:id="@+id/btnLog"
+        android:onClick="logDose" />
 
 </RelativeLayout>

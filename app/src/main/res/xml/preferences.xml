@@ -24,4 +24,13 @@
         android:singleLine="true"
         android:title="Insulin Sensitivity (mg/dL per U)"
         android:key="sensitivity_preference" />
+    <EditTextPreference
+        android:defaultValue="3"
+        android:inputType="number"
+        android:selectAllOnFocus="true"
+        android:singleLine="true"
+        android:title="Active Insulin Time (Hours)"
+        android:key="active_insulin_time_preference"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
 </PreferenceScreen>
