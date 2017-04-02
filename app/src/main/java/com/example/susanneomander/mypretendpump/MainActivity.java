@@ -7,6 +7,7 @@ import android.preference.PreferenceManager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.Editable;
+import android.text.format.DateUtils;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -103,7 +104,18 @@ public class MainActivity extends AppCompatActivity {
         TextView tVLog = (TextView) findViewById(R.id.tVLog);
         SharedPreferences sharedPref = getPreferences(Context.MODE_PRIVATE);
         float dose = sharedPref.getFloat("dose", 0);
-        tVLog.setText(String.format("%.01f", dose));
+        long doseTime = sharedPref.getLong("doseTime", 0);
+        long timeSinceDose = System.currentTimeMillis() - doseTime;
+        long fullDay = 24 * 60 * 60 * 1000;
+        if (timeSinceDose > fullDay) {
+            tVLog.setText("Last bolus was more than 24 hours ago");
+        }
+        if (timeSinceDose < fullDay) {
+            tVLog.setText(String.format("Last bolus was %.01f units at %s", dose, DateUtils.getRelativeTimeSpanString(doseTime)));
+        }
+        if (doseTime == 0) {
+            tVLog.setText("No bolus log recorded");
+        }
     }
 
     public void logDose(View view) {
@@ -111,6 +123,7 @@ public class MainActivity extends AppCompatActivity {
         SharedPreferences sharedPref = getPreferences(Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = sharedPref.edit();
         editor.putFloat("dose", units);
+        editor.putLong("doseTime", System.currentTimeMillis());
         editor.commit();
         displayLog();
     }
