@@ -45,6 +45,8 @@ public class MainActivity extends AppCompatActivity {
         EditText eTBG = (EditText) findViewById(R.id.eTBG);
         EditText eTCarbs = (EditText) findViewById(R.id.eTCarbs);
         TextView eTUnits = (TextView) findViewById(R.id.eTUnitsInsulin);
+        TextView tVBGUnits = (TextView) findViewById(R.id.tVBGUnits);
+        TextView tVCarbUnits = (TextView) findViewById(R.id.tVCarbUnits);
 
         SharedPreferences SP = PreferenceManager.getDefaultSharedPreferences(getBaseContext());
         float mTarget = Float.parseFloat(SP.getString("bg_preference", "120.0"));
@@ -77,7 +79,12 @@ public class MainActivity extends AppCompatActivity {
         //Toast toast = Toast.makeText(getApplicationContext(), "bg=" + bg + " carbs=" + carbs, Toast.LENGTH_LONG);
         //toast.show();
 
-        units = (bloodglucose-mTarget)/mSensitivity+carbohydrates/mRatio;
+        float bgcorrection = (bloodglucose-mTarget)/mSensitivity;
+        tVBGUnits.setText(String.format("%.01f", bgcorrection));
+        float carbcorrection = carbohydrates / mRatio;
+        tVCarbUnits.setText(String.format("%.01f", carbcorrection));
+
+        units = bgcorrection + carbcorrection;
         eTUnits.setText(String.format("%.01f", units));
 
         try {
