@@ -10,15 +10,6 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="com.example.susanneomander.mypretendpump.MainActivity">
 
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/tVCarbUnits"
-        android:textAppearance="@android:style/TextAppearance.Material.Medium"
-        android:layout_below="@+id/tVBGUnits"
-        android:layout_alignLeft="@+id/tVBGUnits"
-        android:layout_alignStart="@+id/tVBGUnits" />
-
     <EditText
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -59,14 +50,6 @@
     </EditText>
 
     <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/eTUnitsInsulin"
-        android:textAppearance="@android:style/TextAppearance.Material.Large"
-        android:layout_alignBottom="@+id/tVunitsText"
-        android:background="@android:color/holo_green_light" />
-
-    <TextView
         android:text="units for BG correction"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -88,16 +71,6 @@
         android:layout_below="@+id/eTCarbs"
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true" />
-
-    <TextView
-        android:text="  units of insulin"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/tVunitsText"
-        android:textAppearance="@android:style/TextAppearance.Material.Large"
-        android:layout_below="@+id/tVCarbUnits"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="89dp" />
 
     <TextView
         android:layout_width="match_parent"
@@ -128,14 +101,61 @@
         android:layout_alignParentEnd="true"
         android:background="?android:attr/colorControlHighlight" />
 
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/tVCarbUnits"
+        android:textAppearance="@android:style/TextAppearance.Material.Medium"
+        android:layout_below="@+id/tVBGUnitsText"
+        android:layout_alignParentStart="true" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/tVAIO"
+        android:textAppearance="@android:style/TextAppearance.Material.Medium"
+        android:layout_below="@+id/tVCarbUnitsText"
+        android:layout_alignParentStart="true" />
+
+    <TextView
+        android:text="active insulin onboard"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/tVAIOText"
+        android:layout_below="@+id/tVCarbUnits"
+        android:layout_alignStart="@+id/tVCarbUnitsText"
+        android:layout_alignParentEnd="true"
+        android:layout_alignBottom="@+id/tVAIO"
+        android:textAppearance="@android:style/TextAppearance.Material.Medium" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/eTUnitsInsulin"
+        android:textAppearance="@android:style/TextAppearance.Material.Large"
+        android:background="@android:color/holo_green_light"
+        android:layout_below="@+id/tVAIO"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="21dp" />
+
+    <TextView
+        android:text="  units of insulin"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/tVunitsText"
+        android:textAppearance="@android:style/TextAppearance.Material.Large"
+        android:layout_alignBaseline="@+id/eTUnitsInsulin"
+        android:layout_alignBottom="@+id/eTUnitsInsulin"
+        android:layout_centerHorizontal="true" />
+
     <Button
         android:text="Log this"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/eTUnitsInsulin"
-        android:layout_toRightOf="@+id/tVunitsText"
-        android:layout_toEndOf="@+id/tVunitsText"
         android:id="@+id/btnLog"
-        android:onClick="logDose" />
+        android:onClick="logDose"
+        android:layout_below="@+id/eTUnitsInsulin"
+        android:layout_alignParentEnd="true"
+        android:layout_toEndOf="@+id/tVunitsText" />
 
 </RelativeLayout>
