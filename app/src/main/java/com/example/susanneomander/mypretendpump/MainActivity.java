@@ -50,6 +50,7 @@ public class MainActivity extends AppCompatActivity {
         TextView eTUnits = (TextView) findViewById(R.id.eTUnitsInsulin);
         TextView tVBGUnits = (TextView) findViewById(R.id.tVBGUnits);
         TextView tVCarbUnits = (TextView) findViewById(R.id.tVCarbUnits);
+        TextView tVAIO = (TextView) findViewById(R.id.tVAIO);
 
         SharedPreferences SP = PreferenceManager.getDefaultSharedPreferences(getBaseContext());
         float mTarget = Float.parseFloat(SP.getString("bg_preference", "120.0"));
@@ -79,15 +80,40 @@ public class MainActivity extends AppCompatActivity {
             carbohydrates = Float.parseFloat(carbs.toString());
         }
 
+
         //Toast toast = Toast.makeText(getApplicationContext(), "bg=" + bg + " carbs=" + carbs, Toast.LENGTH_LONG);
         //toast.show();
 
         float bgcorrection = (bloodglucose-mTarget)/mSensitivity;
-        tVBGUnits.setText(String.format("   %.01f", bgcorrection));
+        tVBGUnits.setText(String.format(" +%.01f", bgcorrection));
         float carbcorrection = carbohydrates / mRatio;
-        tVCarbUnits.setText(String.format("   %.01f", carbcorrection));
+        tVCarbUnits.setText(String.format(" +%.01f", carbcorrection));
 
-        units = bgcorrection + carbcorrection;
+        SharedPreferences sharedPref = getPreferences(Context.MODE_PRIVATE);
+        SharedPreferences SPa = PreferenceManager.getDefaultSharedPreferences(getBaseContext());
+        float tAIO = Float.parseFloat(SPa.getString("active_insulin_time_preference", "3.0")) * 60 * 60 * 1000;
+        long tNow = System.currentTimeMillis();
+        long t0 = sharedPref.getLong("doseTime", 0);
+        long tDiff = tNow - t0;
+        float dose = sharedPref.getFloat("dose", 0);
+        float aio = 0;
+
+        try {
+            float slope = -(dose / tAIO);
+            aio = dose + (tDiff * slope);
+        }
+        catch (Exception e) {
+            aio = 0;
+        }
+
+        if (tDiff > tAIO) {
+            aio = 0;
+        }
+
+
+        tVAIO.setText(String.format("  -%.01f", aio));
+
+        units = bgcorrection + carbcorrection - aio;
         eTUnits.setText(String.format("  %.01f", units));
 
         try {
